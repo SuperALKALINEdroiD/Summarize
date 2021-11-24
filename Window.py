@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from summary import Summry
 
 class Ui_MainWindow(object):
 
@@ -25,7 +25,7 @@ class Ui_MainWindow(object):
         self.lineEdit.setGeometry(QtCore.QRect(20, 10, 113, 23))
         self.filename = self.lineEdit.text()
 
-        
+    
         self.plainTextEdit = QtWidgets.QPlainTextEdit(self.centralwidget)
         self.plainTextEdit.setGeometry(QtCore.QRect(20, 40, 761, 531))
         MainWindow.setCentralWidget(self.centralwidget)
@@ -34,7 +34,7 @@ class Ui_MainWindow(object):
 
 
     def retranslateUi(self, MainWindow):
-        _translate = QtCore.QCoreApplication.translate
+        translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.save_button.setText(_translate("MainWindow", "Save"))
 
@@ -45,6 +45,9 @@ class Ui_MainWindow(object):
         file = open(f'/home/AlkalineD/Documents/Project_file/{filename}', 'w')
         file.write(corpus)
         file.close()
+
+        summry_obj = Summry('/home/AlkalineD/Documents/Project_file', f'{filename}')
+        summry_obj.create_file()
 
 
 
